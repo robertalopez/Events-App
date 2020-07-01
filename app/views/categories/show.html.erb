@@ -1,2 +1,7 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h1><%= @category.title %> Events:</h1>
+<br>
+<ul>
+<% @category.events.each do |event| %>
+    <%= link_to event.title, event_path(event) %>
+    <% end %>
+</ul> 
