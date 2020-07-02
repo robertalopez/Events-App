@@ -1,3 +1,17 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Your Profile:</h1>
+
+<% if flash[:success] %>
+  <p style="color: green"> <%= flash[:success] %> </p>
+<% end %>
+
+<p> Username: <%= @user.username %></p>
+<p> Bio: <%= @user.username %></p>
+<br>
+<%= button_to "Edit", edit_user_path, method: :get %>
+
+<% @user.events.each do |event| %>
+    <%= link_to event.title, event_path(event) %>
+<% end %> 
+
+
 

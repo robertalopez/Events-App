@@ -7,12 +7,15 @@
 # t.datetime "updated_at", precision: 6, null: false
 
 class UsersController < ApplicationController
+  before_action :current_user, only: [:show, :edit, :destroy, :update] 
+  #skip_before_action :current_user, only: [:index, :create]
+  skip_before_action :authorized, only: [:new, :create]
+
   def index
     @users = User.all 
   end
 
   def show
-    current_user
   end
 
   def new
@@ -20,22 +23,30 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    user.save 
-    redirect_to user_path(user)
+    @user = User.create(params.require(:user).permit(:username,        
+    :password))
+    session[:user_id] = @user.id
+    redirect_to '/welcome'
   end
 
   def edit
-    current_user
   end
 
   def update
-    @user.update(user_params)
+    if @user.update(user_params)
+      flash[:success] = "Profile updated."
+      redirect_to @user 
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to edit_user_path
+    end
+
+    
   end
 
   def destroy
-    current_user
     @user.destroy 
+    redirect_to '/welcome'
   end
 
   private 
@@ -45,6 +56,6 @@ class UsersController < ApplicationController
   end 
 
   def current_user
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 end
