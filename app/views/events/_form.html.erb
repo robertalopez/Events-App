@@ -1,0 +1,28 @@
+<% if flash[:errors] %>
+    <ul>
+        <% flash[:errors].each do |error| %>
+            <li style="color: red"> <%= error %> </li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @event do |f| %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :date %>
+<%= f.date_field :date %>
+
+<%= f.label "Host" %>
+<%= f.collection_select :user_id, @users, :id, :username %>
+
+<%= f.label :latitude %>
+<%= f.number_field :latitude, step: :any %>
+
+<%= f.label :longitude %>
+<%= f.number_field :longitude, step: :any%>
+
+<%= f.submit %>
+
+<% end %>
