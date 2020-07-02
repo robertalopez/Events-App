@@ -7,8 +7,8 @@
 # t.datetime "updated_at", precision: 6, null: false
 
 class UsersController < ApplicationController
-  before_action :current_user, only: [:show, :edit, :destroy, :update] 
-  #skip_before_action :current_user, only: [:index, :create]
+  before_action :current_user, only: [:show]
+  before_action :session_user, only: [:edit, :update, :destroy] 
   skip_before_action :authorized, only: [:new, :create]
 
   def index
@@ -55,7 +55,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :bio, :profile_picture)
   end 
 
-  def current_user
-    @user = User.find(session[:user_id])
-  end
+   def current_user
+     @user = User.find(params[:id])
+   end
+
 end

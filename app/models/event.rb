@@ -18,4 +18,5 @@ class Event < ApplicationRecord
       less_than: 49.384358,
       message: "appears to be outside of the contiguous United States."
     }
+    
 end

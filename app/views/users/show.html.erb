@@ -1,17 +1,37 @@
-<h1>Your Profile:</h1>
+<% if @user.id == session[:user_id] %>
+    <h1>Your Profile:</h1>
 
-<% if flash[:success] %>
-  <p style="color: green"> <%= flash[:success] %> </p>
+    <% if flash[:success] %>
+     <p style="color: green"> <%= flash[:success] %> </p>
+    <% end %>
+<% else  %>
+    <h1> Profile </h3>
 <% end %>
-
+<!- the line below is how i thought we could show the picture, in the server is shows a weird little symbol but no picture; maybe just remove picture? -> 
+<image src="<%= @user.profile_picture %>">
 <p> Username: <%= @user.username %></p>
 <p> Bio: <%= @user.username %></p>
+<p> Most Popular Event: <%= @user.most_popular %></p>
+<P> Most Common Event Type: <%= @user.average_event %></p>
+<p> Most Popular Attended Event: <%= @user.most_attended %></p>
 <br>
-<%= button_to "Edit", edit_user_path, method: :get %>
+<% if @user.id == session[:user_id] %>
+    <%= button_to "Edit", edit_user_path, method: :get %>
+<% end %> 
+
+<h3> Events: </h3>
 
 <% @user.events.each do |event| %>
     <%= link_to event.title, event_path(event) %>
 <% end %> 
+
+<h3> Events Attended: </h3>
+
+<% @user.attendances.each do |att| %> 
+    <%= link_to att.event.title, event_path(att.event) %>
+    <% end %>
+
+
 
 
 
