@@ -1,0 +1,10 @@
+<h1> New Attendance </h1>
+
+<%= form_for @attendance do |f| %>
+ 
+ <%= f.label :event %>
+ <%= f.collection_select :event_id, @events, :id, :title %> 
+ 
+ <%= f.hidden_field :user_id, :value => session[:user_id] %>
+ <%= f.submit %> 
+ <% end %>

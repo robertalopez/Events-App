@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show, :new, :create]
 
-  resources :attendances, only: [:create]
+  resources :attendances, only: [:new, :create]
 end
 
 
