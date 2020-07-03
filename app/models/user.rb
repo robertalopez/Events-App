@@ -32,6 +32,18 @@ class User < ApplicationRecord
         end 
     end 
 
+    def self.random_user 
+        User.all.sample(1)
+    end 
+
+    def self.newest_user 
+        User.all.max_by {|guy| guy.id}
+    end 
+
+    def self.most_events
+        User.all.max_by{|guy| guy.events.count}
+    end 
+
     def most_attended 
         max = 0 
         name = " "

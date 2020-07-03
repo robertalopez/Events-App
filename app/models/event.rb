@@ -18,5 +18,17 @@ class Event < ApplicationRecord
       less_than: 49.384358,
       message: "appears to be outside of the contiguous United States."
     }
+
+    def self.random_event
+         Event.all.sample(1)
+    end 
+
+    def self.most_popular
+        Event.all.max_by{|event| event.attendances.count}
+    end 
+
+    def self.most_recent
+        Event.all.max_by{|event| event.id}
+    end 
     
 end

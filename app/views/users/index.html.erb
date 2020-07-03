@@ -1,4 +1,8 @@
 <h1>All Users</h1>
+<% featured = User.random_user %>
+<h3> Checkout This User! <%= link_to featured[0].username, user_path(featured[0]) %></h3><br>
+<h3> Welcome Our Newest User! <%= link_to User.newest_user.username, user_path(User.newest_user) %></h3><br>
+<h3> Our Most Active User: <%= link_to User.most_events.username, user_path(User.most_events) %></h3><br>
 
 <ul>
   <% @users.each do |user| %>

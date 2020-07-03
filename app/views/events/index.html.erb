@@ -1,4 +1,10 @@
 <h1>All Events</h1>
+<% featured = Event.random_event %>
+<h3> Checkout This Event! <%= link_to featured[0].title, event_path(featured[0]) %></h3><br>
+<h3> Most Popular Event <%= link_to Event.most_popular.title, event_path(Event.most_popular) %></h3><br>
+<h3> Newest Event <%= link_to Event.most_recent.title, event_path(Event.most_recent) %></h3><br>
+ 
+
 <ul>
   <% @events.each do |event| %>
     <li> <%= link_to event.title, event_path(event) %> </li>
