@@ -4,8 +4,9 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.date :date
       t.references :user, foreign_key: true
       t.string :title
-      t.float :longitude
-      t.float :latitude
+      t.string :location
+      t.float :xpos
+      t.float :ypos
 
       t.timestamps
     end

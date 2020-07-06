@@ -8,16 +8,14 @@
 
 <p> Date: <%= @event.date %></p>
 <p> Host: <%= link_to @event.user.username, user_path(@event.user) %></p>
-<br>
-<p> Longitude: <%= @event.longitude %></p>
-<p> Latitude: <%= @event.latitude %></p>
+<p> Location: <%= @event.location %></p>
 
 <h3> Attendees </h3>
 <% @event.attendees.each do |guy| %>
   <%= link_to guy.username, user_path(guy) %>
   <% end %>
   <br>
-  <br> 
+  <br>
 
 <%= button_to "Edit Info for this Event", edit_event_path, method: :get %>
 <%#= button_to "Delete Event", event_path, method: :delete %>

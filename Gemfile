@@ -52,3 +52,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# API Key gem
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+
+#HTTParty
+gem 'httparty', '~> 0.13.7'

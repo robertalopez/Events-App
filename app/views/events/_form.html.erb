@@ -17,11 +17,8 @@
 <%= f.label "Host" %>
 <%= f.collection_select :user_id, @users, :id, :username %>
 
-<%= f.label :latitude %>
-<%= f.number_field :latitude, step: :any %>
-
-<%= f.label :longitude %>
-<%= f.number_field :longitude, step: :any%>
+<%= f.label :location %>
+<%= f.text_field :location %>
 
 <%= f.submit %>
 

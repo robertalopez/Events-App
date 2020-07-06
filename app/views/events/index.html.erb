@@ -1,12 +1,24 @@
+<%# Options: %>
+<% xadjust = 350 %>
+<% yadjust = 50 %>
+
+
 <h1>All Events</h1>
 <% featured = Event.random_event %>
-<h3> Checkout This Event! <%= link_to featured[0].title, event_path(featured[0]) %></h3><br>
-<h3> Most Popular Event <%= link_to Event.most_popular.title, event_path(Event.most_popular) %></h3><br>
-<h3> Newest Event <%= link_to Event.most_recent.title, event_path(Event.most_recent) %></h3><br>
- 
+<h3> Checkout This Event! <%= link_to featured[0].title, event_path(featured[0]) %></h3>
+<h3> Most Popular Event <%= link_to Event.most_popular.title, event_path(Event.most_popular) %></h3>
+<h3> Newest Event <%= link_to Event.most_recent.title, event_path(Event.most_recent) %></h3>
+
+<IMG STYLE="position:absolute; TOP:<%= yadjust %>px; LEFT:<%= xadjust %>px; WIDTH:<%= @map_xmax %>px; HEIGHT:<%= @map_ymax %>px" SRC="https://png2.cleanpng.com/sh/a70da144d0dadfd92a8c43fd9696463e/L0KzQYm3VMI4N6FniZH0aYP2gLBuTfNwdqVufAd4dYOwhbBwlPVlNaR5eeZucz3rccjoifkuap1mht02bXHzPcP2gfQudZJ1RdDqbnTsfrK0hP9ubaR5gdVqLYTrhbBpTcVibWRqTtQ7MULpRbK9TsQ1O2c3TKgBMUW1RImBVcE4OGE8T6k3cH7q/kisspng-contiguous-united-states-hawaii-blank-map-road-map-nandina-domestica-thunb-5ae3e6b212f5a6.4436246615248851700777.png">
 
 <ul>
   <% @events.each do |event| %>
     <li> <%= link_to event.title, event_path(event) %> </li>
   <% end %>
 </ul>
+
+<% @events.each do |event| %>
+  <%= link_to event_path(event) do %>
+    <IMG STYLE="position:absolute; TOP:<%= event.ypos + yadjust %>px; LEFT:<%= event.xpos + xadjust %>px; WIDTH:30px; HEIGHT:30px" SRC="https://cdn4.iconfinder.com/data/icons/maps-and-location/128/Map__Location_large_dot_indicator_navigation-512.png">
+  <% end %>
+<% end %>

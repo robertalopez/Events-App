@@ -11,9 +11,9 @@
 
   <body style="background-color:lightblue;">
   <div style="float: left; width: auto;"><%= button_to "Events", events_path, method: :get %></div>
-  <div style="float: left; width: auto;"><%= button_to "Create an Event", new_event_path, method: :get %></div> 
-  <div style="float: left; width: auto;"><%= button_to "About", about_path, method: :get%></div>
+  <div style="float: left; width: auto;"><%= button_to "Create an Event", new_event_path, method: :get %></div>
   <div style="float: left; width: auto;"><%= button_to "Attend an Event", new_event_attendance_path(1), method: :get %></div>
+  <div style="float: left; width: auto;"><%= button_to "About", about_path, method: :get%></div>
   <br>
     <%= yield %>
   </body>
