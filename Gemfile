@@ -57,4 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 #HTTParty
-gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.21.0'
